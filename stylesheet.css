@@ -4,6 +4,7 @@
     font-size: 16pt;
 }
 
-div {
-    display:flex;
+#pixel {
+    height: 50px;
+    width: 50px;
 }

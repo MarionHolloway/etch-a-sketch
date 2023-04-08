@@ -4,6 +4,18 @@
     font-size: 16pt;
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .pixel {
     height: 50px;
     width: 50px;

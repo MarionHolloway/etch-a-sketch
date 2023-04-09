@@ -1,5 +1,5 @@
 function changeColour(box) {
-    box.setAttribute('style', 'background-color: yellow;');
+    box.setAttribute('style', 'background-color: black;');
 }
 
 
@@ -14,11 +14,10 @@ function setHoverEffect() {
 
 function createGrid(container, cells) {
     const pixel = document.createElement('div');
-    pixel.style.backgroundColor = "blue";
+    pixel.style.backgroundColor = "grey";
     pixel.classList.add('pixel');
 
     const row = document.createElement('div');
-    row.style.backgroundColor = "green";
     row.classList.add('row');
 
     for (let i = 0; i < cells; i++) {
@@ -55,7 +54,7 @@ function setGridSize() {
     }
 }
 
-const startingCells = 16;
+const startingCells = 64;
 const container = document.querySelector('#container');
 createGrid(container, startingCells);
 const btn = document.querySelector('#btn');

@@ -17,7 +17,9 @@ function createGrid(container) {
     }
 }
 
-
+function changeColour(box) {
+    box.setAttribute('style', 'background-color: yellow;');
+}
 
 const container = document.querySelector('#container');
 createGrid(container);
@@ -29,7 +31,5 @@ createGrid(container);
 const boxes = document.getElementsByClassName('pixel');
 
 for (const box of boxes) {
-  box.addEventListener('mouseenter', function () {
-    box.setAttribute('style', 'background-color: yellow;');
-  });
+  box.addEventListener('mouseenter', function() {changeColour(box)});
 }

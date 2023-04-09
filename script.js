@@ -1,4 +1,18 @@
-function createGrid(container) {
+function changeColour(box) {
+    box.setAttribute('style', 'background-color: yellow;');
+}
+
+
+function setHoverEffect() {
+    const boxes = document.getElementsByClassName('pixel');
+
+    for (const box of boxes) {
+        box.addEventListener('mouseenter', function() {changeColour(box)});
+    }
+}
+
+
+function createGrid(container, cells) {
     const pixel = document.createElement('div');
     pixel.style.backgroundColor = "blue";
     pixel.classList.add('pixel');
@@ -7,29 +21,42 @@ function createGrid(container) {
     row.style.backgroundColor = "green";
     row.classList.add('row');
 
-    for (let size = 0; size < 16; size++) {
+    for (let i = 0; i < cells; i++) {
         row.appendChild(pixel.cloneNode(true));
         
     }
 
-    for (let rows = 0; rows < 16; rows++) {
+    for (let j = 0; j < cells; j++) {
         container.appendChild(row.cloneNode(true));
+    }
+    setHoverEffect();
+}
+
+
+function setGridSize() {
+    while (container.firstChild) {
+        container.firstChild.remove()
+    }
+
+    let response = prompt("What size grid do you want?", 16);
+    let cells = parseInt(response);
+
+
+    if (cells != null || cells != NaN) {
+        if (cells <= 100 && cells > 0) {
+            createGrid(container, cells)
+        }
+        else {
+            cells = prompt("The size must be between 1 and 100. What size grid do you want?", 16);
+        }
+    }
+    else {
+        cells = prompt("Please type a number. What size grid do you want?", 16);
     }
 }
 
-function changeColour(box) {
-    box.setAttribute('style', 'background-color: yellow;');
-}
-
+const startingCells = 16;
 const container = document.querySelector('#container');
-createGrid(container);
-
-
-
-
-
-const boxes = document.getElementsByClassName('pixel');
-
-for (const box of boxes) {
-  box.addEventListener('mouseenter', function() {changeColour(box)});
-}
+createGrid(container, startingCells);
+const btn = document.querySelector('#btn');
+btn.addEventListener('click',setGridSize);
